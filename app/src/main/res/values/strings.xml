@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HackIllinois Android Challenge</string>
+    <string name="hello">Hello Android Applicant!</string>
+    <string name="event_desc">Event Desc</string>
+    <string name="event_name">Event Name</string>
+    <string name="event_time">Event time</string>
+    <string name="event_type">Event Type</string>
+    <string name="desc">Desc</string>
+    <string name="name">Name</string>
+    <string name="time">Time</string>
+    <string name="location">Location</string>
+    <string name="type">Type</string>
+    <string name="Time">\@string/time</string>
+</resources>
