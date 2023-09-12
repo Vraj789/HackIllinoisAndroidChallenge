@@ -2,7 +2,6 @@ package com.example.hackillinoisandroidchallenge
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,10 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
         eventsRecyclerView = findViewById(R.id.eventsRecyclerView)
-
 
         getAllEvents()
 
@@ -43,20 +39,19 @@ class MainActivity : ComponentActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MyAPI::class.java)
-        api.getComments().enqueue(object : Callback<Event>{
-            override fun onResponse(call: Call<Event>, response: Response<Event>) {
+
+        api.getEvents().enqueue(object : Callback<Schedule>{
+            override fun onResponse(call: Call<Schedule>, response: Response<Schedule>) {
                 if (response.isSuccessful) {
-                    allEventsList = response.body()!!.events
+                    allEventsList = response.body().events
                     eventsRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
                     eventsRecyclerView.adapter = RecyclerAdapter(allEventsList)
                 }
             }
 
-            override fun onFailure(call: Call<Event>, t: Throwable) {
+            override fun onFailure(call: Call<Schedule>, t: Throwable) {
                 Log.i(TAG, "onResponse: ${t.message}")
             }
-
-
         })
     }
 

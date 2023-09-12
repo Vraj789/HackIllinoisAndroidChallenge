@@ -45,7 +45,7 @@ class RecyclerAdapter(private var allEventList: List<Events>) : RecyclerView.Ada
         holder.eventName.text = allEventList[position].name
         holder.eventDesc.text = allEventList[position].description
         Log.i(TAG, allEventList[position].startTime.toString())
-        holder.eventTime.text = getDateTime(allEventList[position].startTime)
+        holder.eventTime.text = getDateTime(allEventList[position].startTime, allEventList[position].endTime)
         holder.eventType.text = allEventList[position].eventType
         if (allEventList[position].locations.isNotEmpty()) {
             holder.eventLocation.text = allEventList[position].locations[0].description
@@ -58,10 +58,14 @@ class RecyclerAdapter(private var allEventList: List<Events>) : RecyclerView.Ada
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun getDateTime(epoch: Int): String? {
+    private fun getDateTime(start: Int, end: Int): String? {
         return try {
-            val instant = Instant.ofEpochSecond(epoch.toLong())
-            return instant.toString()
+            val startTime = Instant.ofEpochSecond(start.toLong())
+            var startTimeString = startTime.toString()
+            val endTime = Instant.ofEpochSecond(end.toLong())
+            val endTimeString = endTime.toString()
+            val time = startTimeString.substring(5, 10) + " (" + startTimeString.substring(11, 16) + " - " + endTimeString.substring(11,16) + ") "
+            return time
         } catch (e: Exception) {
             e.toString()
         }

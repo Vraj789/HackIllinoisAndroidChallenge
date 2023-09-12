@@ -6,5 +6,5 @@ import retrofit2.Call
 interface MyAPI {
 
     @GET("event/")
-    fun getComments(): Call<Event>
+    fun getEvents(): Call<Schedule>
 }

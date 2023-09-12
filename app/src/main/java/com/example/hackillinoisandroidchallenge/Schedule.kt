@@ -1,6 +1,6 @@
 package com.example.hackillinoisandroidchallenge
 
-data class Event(
+data class Schedule(
 
     val events: List<Events>
 //    val id: String,
