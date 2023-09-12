@@ -31,7 +31,7 @@ class RecyclerAdapter(private var allEventList: List<Events>) : RecyclerView.Ada
 
             itemView.setOnClickListener { v: View ->
                 val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "You clicked on item # ${position + 1}" , Toast.LENGTH_SHORT).show()
+                // Toast.makeText(itemView.context, "You clicked on item # ${position + 1}" , Toast.LENGTH_SHORT).show()
             }
         }
     }
