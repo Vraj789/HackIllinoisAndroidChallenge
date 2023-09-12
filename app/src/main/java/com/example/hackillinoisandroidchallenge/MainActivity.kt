@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         api.getEvents().enqueue(object : Callback<Schedule>{
             override fun onResponse(call: Call<Schedule>, response: Response<Schedule>) {
                 if (response.isSuccessful) {
-                    allEventsList = response.body().events
+                    allEventsList = response.body()!!.events
                     eventsRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
                     eventsRecyclerView.adapter = RecyclerAdapter(allEventsList)
                 }
